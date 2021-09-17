@@ -6,6 +6,10 @@
       "type": "string",
       "defaultValue": "jtlreportr"
     },
+    "mongodbshareName": {
+      "type": "string",
+      "defaultValue": "mongodb"
+    },
     "Storageaccountname": {
       "type": "string"
     },
@@ -170,7 +174,7 @@
           {
             "name": "mongodb",
             "azureFile": {
-              "shareName": "mongodb",
+              "shareName": "[parameters('mongodbshareName')]",
               "storageAccountName": "[parameters('Storageaccountname')]",
               "storageAccountKey": "[parameters('storageKey')]"
             }

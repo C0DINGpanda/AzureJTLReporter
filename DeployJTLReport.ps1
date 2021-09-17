@@ -1,6 +1,8 @@
 $ResourceGroup = "<ResourceGroup Name>"
 $Storageaccountname = "<Storage account name>"
 $storageKey = "<Storage key>"
+$mongodbshareName = "<MongoDB Fileshare name >"
+$postgresdbFileshare = "<postgresDB Fileshare name >"
 $JWT_TOKEN = "27JU4qy73hchTMLoH8w9m"
 $JWT_TOKEN_LOGIN = "GdK6TrCvX7rJRZJVg4ijt"
 
@@ -9,6 +11,7 @@ $postObj = @{ }
 $postObj.Add("containerGroupName", "postgres")
 $postObj.Add("Storageaccountname", $Storageaccountname)
 $postObj.Add("storageKey", $storageKey)
+$postObj.Add("postgresdbFileshare", $postgresdbFileshare)
 $postgres = New-AzResourceGroupDeployment -name "postgres" -ResourceGroupName $ResourceGroup `
 -TemplateParameterObject $postObj -TemplateFile "$($PSScriptRoot)\postgresARM.json"
 
@@ -81,6 +84,7 @@ $postObj.Add("storageKey", $storageKey)
 $postObj.Add("JWT_TOKEN", $JWT_TOKEN)
 $postObj.Add("JWT_TOKEN_LOGIN", $JWT_TOKEN_LOGIN)
 $postObj.Add("PostgresIP", $MyServer)
+$postObj.Add("mongodbshareName", $mongodbshareName)
 
 $postgres = New-AzResourceGroupDeployment -name "JtlReporter" -ResourceGroupName $ResourceGroup `
 -TemplateParameterObject $postObj -TemplateFile "$($PSScriptRoot)\JtlReporterArm.json"
